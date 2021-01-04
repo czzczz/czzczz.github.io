@@ -1,0 +1,66 @@
+<!-- imageRoot:javascript -->
+
+# JS 面向对象
+
+<!-- TOC -->
+
+-   [JS 面向对象](#js%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1)
+    -   [JS 函数对象](#js-%e5%87%bd%e6%95%b0%e5%af%b9%e8%b1%a1)
+    -   [继承实例](#%e7%bb%a7%e6%89%bf%e5%ae%9e%e4%be%8b)
+
+<!-- /TOC -->
+
+JS 的面向对象是基于`原型`的面向对象，继承关系基于`原型链`。
+
+-   `prototype`：JavaScript 中每个函数都有一个 prototype 属性，此属性指向了该函数的原型对象。
+-   `__proto__`：JavaScript 中每一个对象（null 除外），包括函数创建的对象、函数自身、原型对象，都有一个**proto**属性，指向了创建该对象的函数的原型。
+-   `constructor`：该属性属于原型对象，指向相关的构造函数。
+
+## JS 函数对象
+
+```js
+function F() {}
+var f = new F();
+F.prototype; // {constructor: ƒ}
+f.__proto__; // {constructor: ƒ}
+F.prototype === f.__proto__; // true
+F.prototype.constructor === F; // true
+
+F.__proto__; // ƒ () { [native code] }
+F.prototype.__proto__; // {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+F.__proto__ === Function.prototype; // true
+F.prototype.__proto__ === Object.prototype; // true
+Object.prototype.__proto__; // null
+```
+
+首先，F 作为一个函数的同时它也是对象，所以它拥有属性**proto**指向了 Function.prototype，因为所有的函数都可以理解为 Function 的实例；
+
+同样的，F.prototype 作为一个对象，它的**proto**指向 Object.prototype，因为它是对象且没有指明的构造函数，所以它直接是 Object 函数生成的实例，自然**proto**就指向 Object.prototype。
+
+## 继承实例
+
+```js
+function fa() {
+	this.a = 'a';
+}
+function fb() {
+	this.b = 'b';
+}
+function fc() {
+	this.c = 'c';
+}
+fb.prototype = new fa();
+fc.prototype = new fa();
+let b = new fb();
+let c = new fc();
+console.log(b.a, c.a); // a a
+b.__proto__.a = 'ba';
+console.log(b.a, c.a); // ba a
+fc.prototype = fb.prototype;
+console.log(b.a, c.a); // ba a
+console.log(b.__proto__ === fb.prototype); //true
+console.log(c.__proto__ === fc.prototype); //false
+c = new fc();
+b.a = 'bba';
+console.log(b.a, c.a, b.__proto__, b.__proto__ === c.__proto__); //bba ba fa { a: 'ba' } true
+```
