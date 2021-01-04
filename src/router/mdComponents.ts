@@ -15,13 +15,13 @@ const mds: RouteRecordRaw[] = [
 	{
 		path: '/notes',
 		name: 'notes',
-		component: import('@/views/notes/index.vue'),
+		component: () => import('@/views/notes/index.vue'),
 		children: mdList.map(page => {
 			const name = page.path.replace('/', '_');
 			return {
 				path: encodeURIComponent(page.path).replace('%2F', '/'),
 				name,
-				component: import('@/notes/' + page.path),
+				component: () => import('@/notes/' + page.path),
 			};
 		}),
 	},

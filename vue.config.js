@@ -1,6 +1,7 @@
 const resolve = require('path').resolve;
 
 module.exports = {
+	publicPath: './',
 	devServer: {
 		open: true,
 		host: 'localhost',
