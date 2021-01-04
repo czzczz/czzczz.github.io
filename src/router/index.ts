@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import mds from './mdComponents';
 
 const routes = ([] as RouteRecordRaw[]).concat(mds).concat([
@@ -11,7 +11,7 @@ const routes = ([] as RouteRecordRaw[]).concat(mds).concat([
 ]);
 
 const router = createRouter({
-	history: createWebHistory(process.env.BASE_URL),
+	history: createWebHashHistory(process.env.BASE_URL),
 	routes,
 });
 
