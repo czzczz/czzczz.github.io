@@ -1,5 +1,3 @@
-<!-- imageRoot:python -->
-
 # Python 闭包
 
 Python 闭包的基本形式与 JS 大致相同，通过内部定义的函数来保留外部函数的运行环境。

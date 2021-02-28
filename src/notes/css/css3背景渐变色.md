@@ -1,5 +1,3 @@
-<!-- imageRoot:css -->
-
 # css3 背景渐变色
 
 ```html

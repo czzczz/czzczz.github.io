@@ -1,5 +1,3 @@
-<!-- imageRoot:python -->
-
 # Python 迭代对象
 
 ## 迭代器实现实例

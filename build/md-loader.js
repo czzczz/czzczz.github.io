@@ -40,14 +40,10 @@ function markdownLoader(val) {
 	// 开始解析MD
 	let content = parser.render(val.replace(/@/g, 'at__')).replace(/at__/g, '@');
 
-	let imageRoot = '.';
-	content = content.replace(/<!--\s*imageRoot:\s*(\w+)\s*-->/, (m, root) => {
-		imageRoot = root;
-		return m;
-	});
-
 	content = content.replace(/\ssrc="(.*?)"/g, (match, path) => {
-		return ` src="${'@/notes/' + imageRoot + '/' + decodeURIComponent(path)}"`;
+		return ` src="@${this.context.slice(this.context.lastIndexOf('src') + 3).replace(/\//g, '/') +
+			'/' +
+			decodeURIComponent(path)}"`;
 	});
 
 	// 保留md中定义的插槽，作为解析完成的Vue Component的插槽

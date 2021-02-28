@@ -1,5 +1,3 @@
-<!-- imageRoot:python -->
-
 # Python 面向对象
 
 ## 常用特殊属性与方法

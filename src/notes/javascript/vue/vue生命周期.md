@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript\vue -->
-
 # vue 生命周期
 
 从前到后共有 8 个钩子函数。

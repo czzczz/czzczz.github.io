@@ -1,5 +1,3 @@
-<!-- imageRoot:css -->
-
 # link VS import
 
 1. link 属于 HTML 标签，而@import 是 CSS 提供的;

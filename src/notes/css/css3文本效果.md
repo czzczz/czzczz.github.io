@@ -1,5 +1,3 @@
-<!-- imageRoot:css -->
-
 # CSS3 文本效果
 
 ## `word-wrap: break-word;`

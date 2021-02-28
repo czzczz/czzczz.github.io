@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript\react -->
-
 # react Hook
 
 通过 Hook，可以在函数组件中完成原本只能在 class 组件中才能完成的操作，比如 state 和生命周期的操作（也叫副作用）。

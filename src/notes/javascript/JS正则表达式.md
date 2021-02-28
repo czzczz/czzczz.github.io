@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript -->
-
 # JS 正则表达式
 
 JS 正则表达式可以通过两种方式声明：

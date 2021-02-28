@@ -3,9 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"serve": "yarn init:md && vue-cli-service serve",
-		"build": "yarn init:md && vue-cli-service build",
-		"init:md": "node ./build/genModules.js",
+		"serve": "vue-cli-service serve",
+		"build": "vue-cli-service build",
 		"prettier": "prettier --write ./**/*.{md,ts,tsx,vue,html,js,jsx} --config ./.prettierrc --use-tabs",
 		"lint": "vue-cli-service lint --fix"
 	},

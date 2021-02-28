@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript -->
-
 # JS 事件队列
 
 <style>

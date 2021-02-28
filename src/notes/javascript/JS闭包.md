@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript -->
-
 # JS 闭包
 
 ## 概念

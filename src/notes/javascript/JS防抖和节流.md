@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript -->
-
 # 防抖和节流
 
 ## 防抖

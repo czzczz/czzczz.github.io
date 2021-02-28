@@ -39,7 +39,7 @@ const useCustomContent = (
 			contentInstance.mount(componentRef.value);
 		});
 		onBeforeUnmount(() => {
-			contentInstance.unmount(componentRef.value);
+			contentInstance.unmount();
 		});
 		return contentInstance;
 	};
@@ -79,7 +79,7 @@ const useVisible = (
 		new Promise(resolve => {
 			visible.value = false;
 			emit('update:modelValue', false);
-			resolve();
+			resolve(null);
 		});
 
 	const show = () =>
@@ -90,7 +90,7 @@ const useVisible = (
 				setTimeout(() => {
 					hide();
 				}, props.visibleTimer);
-			resolve();
+			resolve(null);
 		});
 
 	return {

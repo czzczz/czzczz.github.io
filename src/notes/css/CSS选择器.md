@@ -1,5 +1,3 @@
-<!-- imageRoot:css -->
-
 # CSS 选择器
 
 ## 选择器类型

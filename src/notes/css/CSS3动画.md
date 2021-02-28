@@ -1,8 +1,4 @@
-<!-- imageRoot:css -->
-
 # CSS3 动画相关
-
-
 
 ## transform 变换
 

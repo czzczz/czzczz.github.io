@@ -9,7 +9,7 @@ const mountToElementEnd = (target: HTMLElement, component: any, opt?: Record<str
 	return {
 		inst,
 		unmount: () => {
-			app.unmount(el);
+			app.unmount();
 			target.removeChild(el);
 		},
 	};

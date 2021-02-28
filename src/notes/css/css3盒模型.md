@@ -1,7 +1,4 @@
-<!-- imageRoot:css -->
-
 # 盒模型
-
 
 从外层到内层依次`margin`、`border`、`padding`、`content`组成的嵌套模型，大致分为两种：
 

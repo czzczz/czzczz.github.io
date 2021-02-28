@@ -1,5 +1,3 @@
-<!-- imageRoot:css -->
-
 # position 属性
 
 ## absolute

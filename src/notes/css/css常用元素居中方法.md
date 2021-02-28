@@ -1,5 +1,3 @@
-<!-- imageRoot:css -->
-
 # CSS 元素居中方法
 
 ## display:flex;

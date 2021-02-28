@@ -1,5 +1,3 @@
-<!-- imageRoot:css -->
-
 # CSS3 边框特效
 
 ## border-radius 圆角边框

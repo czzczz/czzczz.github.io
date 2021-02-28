@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript\vue -->
-
 # Vue 中绑定 key 的作用
 
 `key是给每一个vnode的唯一id,可以依靠key,更准确, 更快的拿到oldVnode中对应的vnode节点。`

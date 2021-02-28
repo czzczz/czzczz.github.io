@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript -->
-
 # JS 箭头函数与 this
 
 ## JS 中的 this

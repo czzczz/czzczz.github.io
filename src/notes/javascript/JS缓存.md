@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript -->
-
 # JS 用到的浏览器缓存
 
 ## cookie

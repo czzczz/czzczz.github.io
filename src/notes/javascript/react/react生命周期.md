@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript\react -->
-
 # react 生命周期
 
 ## componentWillMount

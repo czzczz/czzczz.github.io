@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript\react -->
-
 # React+Webpack+Typescript 项目初始化
 
 ## 项目目录结构

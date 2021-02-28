@@ -1,5 +1,3 @@
-<!-- imageRoot:javascript -->
-
 # JS 数据类型
 
 ## Js 基本数据类型
