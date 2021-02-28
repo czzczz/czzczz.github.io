@@ -36,6 +36,7 @@ module.exports = {
 		'@typescript-eslint/no-empty-function': 1,
 		'@typescript-eslint/no-var-requires': 0,
 		curly: [1, 'multi'],
+		'prefer-const': 1,
 	},
 	overrides: [
 		{

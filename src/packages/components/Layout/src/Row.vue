@@ -1,6 +1,5 @@
 <script lang="tsx">
-import { defineComponent, h, computed, provide } from 'vue';
-import type { PropType } from 'vue';
+import { defineComponent, h, computed, provide, PropType } from 'vue';
 
 export type RowType = 'flex' | 'float';
 
@@ -42,14 +41,8 @@ export default defineComponent({
 		provide('RowGutter', props.gutter);
 
 		const style = computed(() => {
-			const ret = {
-				marginLeft: '',
-				marginRight: '',
-			};
-			if (props.gutter) {
-				ret.marginLeft = `-${props.gutter / 2}px`;
-				ret.marginRight = ret.marginLeft;
-			}
+			const ret: Partial<CSSStyleDeclaration> = {};
+			if (props.gutter) ret.marginRight = ret.marginLeft = `-${props.gutter / 2}px`;
 			return ret;
 		});
 

@@ -1,6 +1,7 @@
 <template>
 	<ShutBWrapper class="shut-b-icon" :class="{ [type]: !color }">
 		<svg
+			v-show="visible"
 			:style="{
 				color,
 			}"
@@ -27,6 +28,10 @@ export default defineComponent({
 			type: String,
 			default: 'text',
 			validator: val => ['text', 'info', 'success', 'warning', 'error'].includes(String(val)),
+		},
+		visible: {
+			type: Boolean,
+			default: true,
 		},
 		color: {
 			type: String,
