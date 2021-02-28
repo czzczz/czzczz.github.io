@@ -2,22 +2,6 @@
 
 # CSS3 边框特效
 
-<!-- TOC -->
-
--   [CSS3 边框特效](#css3-%e8%be%b9%e6%a1%86%e7%89%b9%e6%95%88)
-    -   [border-radius 圆角边框](#border-radius-%e5%9c%86%e8%a7%92%e8%be%b9%e6%a1%86)
-    -   [box-shadow 边框阴影](#box-shadow-%e8%be%b9%e6%a1%86%e9%98%b4%e5%bd%b1)
-    -   [border-image 特效边框](#border-image-%e7%89%b9%e6%95%88%e8%be%b9%e6%a1%86)
-    -   [outline-offset 轮廓位置](#outline-offset-%e8%bd%ae%e5%bb%93%e4%bd%8d%e7%bd%ae)
-    -   [background-\* 背景显示](#background--%e8%83%8c%e6%99%af%e6%98%be%e7%a4%ba)
-        -   [background-clip 背景显示区域](#background-clip-%e8%83%8c%e6%99%af%e6%98%be%e7%a4%ba%e5%8c%ba%e5%9f%9f)
-        -   [background-origin 背景的位置](#background-origin-%e8%83%8c%e6%99%af%e7%9a%84%e4%bd%8d%e7%bd%ae)
-            -   [background-position 背景图片的位置](#background-position-%e8%83%8c%e6%99%af%e5%9b%be%e7%89%87%e7%9a%84%e4%bd%8d%e7%bd%ae)
-        -   [background-size 背景大小](#background-size-%e8%83%8c%e6%99%af%e5%a4%a7%e5%b0%8f)
-        -   [background-break 背景跨盒显示](#background-break-%e8%83%8c%e6%99%af%e8%b7%a8%e7%9b%92%e6%98%be%e7%a4%ba)
-
-<!-- /TOC -->
-
 ## border-radius 圆角边框
 
 border-radius 为简写属性，实际代表的四个属性：

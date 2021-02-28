@@ -2,20 +2,6 @@
 
 # vue 生命周期
 
-<!-- TOC -->
-
--   [vue 生命周期](#vue-%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f)
-    -   [beforeCreate](#beforecreate)
-    -   [created](#created)
-    -   [beforeMount](#beforemount)
-    -   [mounted](#mounted)
-    -   [beforeUpdate](#beforeupdate)
-    -   [updated](#updated)
-    -   [beforeDestroy](#beforedestroy)
-    -   [destroyed](#destroyed)
-
-<!-- /TOC -->
-
 从前到后共有 8 个钩子函数。
 
 ## beforeCreate

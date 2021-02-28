@@ -2,18 +2,6 @@
 
 # JS 用到的浏览器缓存
 
-<!-- TOC -->
-
--   [JS 用到的浏览器缓存](#js%e7%94%a8%e5%88%b0%e7%9a%84%e6%b5%8f%e8%a7%88%e5%99%a8%e7%bc%93%e5%ad%98)
-    -   [cookie](#cookie)
-        -   [cookie 特性](#cookie%e7%89%b9%e6%80%a7)
-        -   [cookie 的优点 极高的扩展性和可用性](#cookie%e7%9a%84%e4%bc%98%e7%82%b9-%e6%9e%81%e9%ab%98%e7%9a%84%e6%89%a9%e5%b1%95%e6%80%a7%e5%92%8c%e5%8f%af%e7%94%a8%e6%80%a7)
-        -   [cookie 的缺点](#cookie%e7%9a%84%e7%bc%ba%e7%82%b9)
-    -   [浏览器缓存](#%e6%b5%8f%e8%a7%88%e5%99%a8%e7%bc%93%e5%ad%98)
-        -   [webStorage 与 cookie 的区别](#webstorage%e4%b8%8ecookie%e7%9a%84%e5%8c%ba%e5%88%ab)
-
-<!-- /TOC -->
-
 ## cookie
 
 JavaScript 可以使用 document.cookie 属性来创建 、读取、及删除 cookie。

@@ -2,29 +2,6 @@
 
 # React+Webpack+Typescript 项目初始化
 
-<!-- TOC -->
-
--   [React+Webpack+Typescript 项目初始化](#reactwebpacktypescript%e9%a1%b9%e7%9b%ae%e5%88%9d%e5%a7%8b%e5%8c%96)
-    -   [项目目录结构](#%e9%a1%b9%e7%9b%ae%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84)
-    -   [npm init](#npm-init)
-    -   [安装依赖包](#%e5%ae%89%e8%a3%85%e4%be%9d%e8%b5%96%e5%8c%85)
-    -   [TypeScript 配置文件](#typescript-%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6)
-    -   [写点示例组件](#%e5%86%99%e7%82%b9%e7%a4%ba%e4%be%8b%e7%bb%84%e4%bb%b6)
-    -   [根文件`index.html`](#%e6%a0%b9%e6%96%87%e4%bb%b6indexhtml)
-    -   [Webpack.config.js](#webpackconfigjs)
-    -   [尝试打包](#%e5%b0%9d%e8%af%95%e6%89%93%e5%8c%85)
-    -   [通过 webpack-dev-server 启用热更新。](#%e9%80%9a%e8%bf%87webpack-dev-server%e5%90%af%e7%94%a8%e7%83%ad%e6%9b%b4%e6%96%b0)
-        -   [在 package.json 的 script 中添加命令](#%e5%9c%a8packagejson%e7%9a%84script%e4%b8%ad%e6%b7%bb%e5%8a%a0%e5%91%bd%e4%bb%a4)
-        -   [修改 webpack.config.js 文件。](#%e4%bf%ae%e6%94%b9webpackconfigjs%e6%96%87%e4%bb%b6)
-        -   [修改 html 文件中 bundle 的引用](#%e4%bf%ae%e6%94%b9html%e6%96%87%e4%bb%b6%e4%b8%adbundle%e7%9a%84%e5%bc%95%e7%94%a8)
-        -   [运行](#%e8%bf%90%e8%a1%8c)
-    -   [添加 redux 以及 react-router](#%e6%b7%bb%e5%8a%a0redux%e4%bb%a5%e5%8f%8areact-router)
-    -   [配置 css-modules 和 sass](#%e9%85%8d%e7%bd%aecss-modules%e5%92%8csass)
-        -   [css-modules 配合 typescript](#css-modules%e9%85%8d%e5%90%88typescript)
-        -   [css-modules, sass 配合 typescript](#css-modules-sass%e9%85%8d%e5%90%88typescript)
-
-<!-- /TOC -->
-
 ## 项目目录结构
 
 ```

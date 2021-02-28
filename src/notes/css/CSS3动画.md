@@ -2,15 +2,7 @@
 
 # CSS3 动画相关
 
-<!-- TOC -->
 
--   [CSS3 动画相关](#css3-动画相关)
-    -   [transform 变换](#transform-变换)
-    -   [transition 过渡动画](#transition-过渡动画)
-    -   [animation 动画](#animation-动画)
-        -   [keyframes 关键帧](#keyframes-关键帧)
-
-<!-- /TOC -->
 
 ## transform 变换
 

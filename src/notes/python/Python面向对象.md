@@ -2,14 +2,6 @@
 
 # Python 面向对象
 
-<!-- TOC -->
-
--   [Python 面向对象](#python-%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1)
-    -   [常用特殊属性与方法](#%e5%b8%b8%e7%94%a8%e7%89%b9%e6%ae%8a%e5%b1%9e%e6%80%a7%e4%b8%8e%e6%96%b9%e6%b3%95)
-    -   [super(cls, self) (super() in Python3)](#supercls-self-super-in-python3)
-
-<!-- /TOC -->
-
 ## 常用特殊属性与方法
 
 ```python

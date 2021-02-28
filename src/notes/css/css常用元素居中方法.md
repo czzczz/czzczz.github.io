@@ -2,16 +2,6 @@
 
 # CSS 元素居中方法
 
-<!-- TOC -->
-
--   [CSS 元素居中方法](#css元素居中方法)
-    -   [display:flex;](#displayflex)
-    -   [transform + position](#transform--position)
-    -   [内联元素（文字）水平居中](#内联元素文字水平居中)
-    -   [内联元素（文字）垂直居中](#内联元素文字垂直居中)
-
-<!-- /TOC -->
-
 ## display:flex;
 
 ```css

@@ -2,19 +2,6 @@
 
 # 盒模型
 
-<!-- TOC -->
-
--   [盒模型](#盒模型)
-    -   [IE 盒模型](#ie盒模型)
-    -   [W3C 标注模型](#w3c标注模型)
-    -   [box-sizing 属性](#box-sizing属性)
-    -   [float 浮动](#float-浮动)
-        -   [清除浮动的方法](#清除浮动的方法)
-    -   [BFC 规范](#bfc规范)
-        -   [BFC 形成条件](#bfc形成条件)
-        -   [BFC 特性](#bfc-特性)
-
-<!-- /TOC -->
 
 从外层到内层依次`margin`、`border`、`padding`、`content`组成的嵌套模型，大致分为两种：
 

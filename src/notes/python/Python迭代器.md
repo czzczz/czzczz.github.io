@@ -2,15 +2,6 @@
 
 # Python 迭代对象
 
-<!-- TOC -->
-
--   [Python 迭代对象](#python-%e8%bf%ad%e4%bb%a3%e5%af%b9%e8%b1%a1)
-    -   [迭代器实现实例](#%e8%bf%ad%e4%bb%a3%e5%99%a8%e5%ae%9e%e7%8e%b0%e5%ae%9e%e4%be%8b)
-    -   [yeild 语句](#yeild-%e8%af%ad%e5%8f%a5)
-        -   [yeild 实例，利用迭代器特性读取大文件](#yeild%e5%ae%9e%e4%be%8b%e5%88%a9%e7%94%a8%e8%bf%ad%e4%bb%a3%e5%99%a8%e7%89%b9%e6%80%a7%e8%af%bb%e5%8f%96%e5%a4%a7%e6%96%87%e4%bb%b6)
-
-<!-- /TOC -->
-
 ## 迭代器实现实例
 
 ```python

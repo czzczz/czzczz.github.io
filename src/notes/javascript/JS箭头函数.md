@@ -2,14 +2,6 @@
 
 # JS 箭头函数与 this
 
-<!-- TOC -->
-
--   [JS 箭头函数与 this](#js-%e7%ae%ad%e5%a4%b4%e5%87%bd%e6%95%b0%e4%b8%8ethis)
-    -   [JS 中的 this](#js%e4%b8%ad%e7%9a%84this)
-    -   [箭头函数](#%e7%ae%ad%e5%a4%b4%e5%87%bd%e6%95%b0)
-
-<!-- /TOC -->
-
 ## JS 中的 this
 
 this 是一个特殊的对象，由函数调用时传入

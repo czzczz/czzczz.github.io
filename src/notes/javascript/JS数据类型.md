@@ -2,25 +2,6 @@
 
 # JS 数据类型
 
-<!-- TOC -->
-
--   [JS 数据类型](#js数据类型)
-    -   [Js 基本数据类型](#js基本数据类型)
-        -   [number](#number)
-            -   [解决精度丢失](#解决精度丢失)
-        -   [bigint](#bigint)
-            -   [bigint 一些问题](#bigint一些问题)
-            -   [bigint 适用范围](#bigint-适用范围)
-    -   [JS 数据类型检测](#js-数据类型检测)
-        -   [typeof](#typeof)
-        -   [instanceof](#instanceof)
-            -   [通过 instanceof 判断基本类型](#通过instanceof判断基本类型)
-    -   [数据类型转换](#数据类型转换)
-        -   [`'=='`与`'==='`](#与)
-        -   [对象转原始类型是根据什么流程运行的？](#对象转原始类型是根据什么流程运行的)
-
-<!-- /TOC -->
-
 ## Js 基本数据类型
 
 1. boolean

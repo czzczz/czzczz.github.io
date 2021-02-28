@@ -2,19 +2,6 @@
 
 # react 生命周期
 
-<!-- TOC -->
-
--   [react 生命周期](#react-生命周期)
-    -   [componentWillMount](#componentwillmount)
-    -   [componentDidMount](#componentdidmount)
-    -   [componentWillReceiveProps](#componentwillreceiveprops)
-    -   [shouldComponentUpdate](#shouldcomponentupdate)
-    -   [componentWillUpdate](#componentwillupdate)
-    -   [componentDidUpdate](#componentdidupdate)
-    -   [componentWillUnmount](#componentwillunmount)
-
-<!-- /TOC -->
-
 ## componentWillMount
 
 在渲染前调用,在客户端也在服务端。

@@ -2,16 +2,6 @@
 
 # react Hook
 
-<!-- TOC -->
-
--   [react Hook](#react-hook)
-    -   [state Hook](#state-hook)
-        -   [state Hook 的函数式更新](#state-hook%e7%9a%84%e5%87%bd%e6%95%b0%e5%bc%8f%e6%9b%b4%e6%96%b0)
-    -   [effect Hook](#effect-hook)
-        -   [为 effect Hook 设置依赖](#%e4%b8%baeffect-hook%e8%ae%be%e7%bd%ae%e4%be%9d%e8%b5%96)
-
-<!-- /TOC -->
-
 通过 Hook，可以在函数组件中完成原本只能在 class 组件中才能完成的操作，比如 state 和生命周期的操作（也叫副作用）。
 
 ## state Hook
