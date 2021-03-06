@@ -43,7 +43,7 @@ export function useKnowledgeTree() {
 interface NoteBodyPoint {
 	id: string;
 	name: string;
-	el: Element;
+	el: HTMLElement;
 	child: NoteBodyPoint[];
 }
 
@@ -60,18 +60,19 @@ export function usePagePoint() {
 	};
 	const initBodyPoints = () => {
 		noteBodyPoints.length = 0;
-		noteBodyRef.value?.querySelectorAll('h2,h3').forEach((node, i) => {
+		noteBodyRef.value?.querySelectorAll('h2,h3').forEach((n, i) => {
+			const node = n as HTMLElement;
 			if (node.tagName === 'H2')
 				noteBodyPoints.push({
 					id: i + '',
-					name: node.innerHTML,
+					name: node.innerText,
 					el: node,
 					child: [],
 				});
 			else if (node.tagName === 'H3')
 				noteBodyPoints[noteBodyPoints.length - 1].child.push({
 					id: i + '',
-					name: node.innerHTML,
+					name: node.innerText,
 					el: node,
 					child: [],
 				});
