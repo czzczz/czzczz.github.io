@@ -1,31 +1,34 @@
 <template>
 	<div class="notes page">
 		<div>
-			<ShutBTree :data="knowledgeTree" @nodeClick="nodeClick"></ShutBTree>
+			<ShutBTree :data="knowledgeTreeData" @nodeClick="knowledgeNodeClick"></ShutBTree>
 		</div>
-		<div class="body">
+		<div class="body" ref="noteBodyRef">
 			<router-view></router-view>
 		</div>
 		<div>
-			<!-- <ShutBTree :data="[]"></ShutBTree> -->
+			<ShutBTree :data="noteBodyPoints" @nodeClick="noteBodyPointClick"></ShutBTree>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
-import { knowledgeTree, KnowledgeTreeNode } from '@/router/mdComponents';
+import { useKnowledgeTree, usePagePoint } from './hooks';
 
 export default defineComponent({
 	name: 'MarkdownNotes',
 
 	setup() {
-		const $router = useRouter();
-		const nodeClick = (data: KnowledgeTreeNode) => {
-			if (data.routeName) $router.push({ name: data.routeName });
+		const { knowledgeTreeData, knowledgeNodeClick } = useKnowledgeTree();
+		const { noteBodyRef, noteBodyPoints, noteBodyPointClick } = usePagePoint();
+		return {
+			knowledgeTreeData,
+			knowledgeNodeClick,
+			noteBodyRef,
+			noteBodyPoints,
+			noteBodyPointClick,
 		};
-		return { knowledgeTree, nodeClick };
 	},
 });
 </script>
@@ -46,6 +49,17 @@ export default defineComponent({
 		&.body {
 			flex: 1;
 			position: relative;
+			/deep/ {
+				h2,
+				h3 {
+					&:hover {
+						text-decoration: underline;
+						&::before {
+							content: '#';
+						}
+					}
+				}
+			}
 		}
 	}
 }
