@@ -70,7 +70,7 @@ export function usePagePoint() {
 					child: [],
 				});
 			else if (node.tagName === 'H3')
-				noteBodyPoints[noteBodyPoints.length - 1].child.push({
+				noteBodyPoints[noteBodyPoints.length - 1]?.child?.push?.({
 					id: i + '',
 					name: node.innerText,
 					el: node,

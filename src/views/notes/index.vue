@@ -1,12 +1,14 @@
 <template>
 	<div class="notes page">
 		<div>
+			<!-- 自动收集的md文件树 -->
 			<ShutBTree :data="knowledgeTreeData" @nodeClick="knowledgeNodeClick"></ShutBTree>
 		</div>
 		<div class="body" ref="noteBodyRef">
 			<router-view></router-view>
 		</div>
 		<div>
+			<!-- 自动收集的页面h2，h3树 -->
 			<ShutBTree :data="noteBodyPoints" @nodeClick="noteBodyPointClick"></ShutBTree>
 		</div>
 	</div>
@@ -22,6 +24,12 @@ export default defineComponent({
 	setup() {
 		const { knowledgeTreeData, knowledgeNodeClick } = useKnowledgeTree();
 		const { noteBodyRef, noteBodyPoints, noteBodyPointClick } = usePagePoint();
+
+		// onMounted(() => {
+		// 	// 禁止选择和复制
+		// 	document.onselectstart = () => false;
+		// });
+
 		return {
 			knowledgeTreeData,
 			knowledgeNodeClick,
