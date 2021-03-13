@@ -15,10 +15,8 @@ module.exports = {
 			.use('vue-loader-v16')
 			.loader('vue-loader-v16')
 			.end()
-			.use(resolve(__dirname, './build/md-loader.js'))
-			.loader(resolve(__dirname, './build/md-loader.js'))
-			.options({
-				raw: true,
-			});
+			.use('md-loader-for-doc')
+			.loader('md-loader-for-doc/lib')
+			.end();
 	},
 };

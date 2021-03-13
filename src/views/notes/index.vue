@@ -49,7 +49,7 @@ export default defineComponent({
 		&.body {
 			flex: 1;
 			position: relative;
-			/deep/ {
+			::v-deep() {
 				h2,
 				h3 {
 					&:hover {
