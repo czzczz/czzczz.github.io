@@ -1,7 +1,7 @@
 <template>
 	<div class="page-header">
 		<div class="title">瞎比比，小小实验室</div>
-		<a class="link-group" target="_blank" href="https://github.com/czzczz">
+		<a class="link-group" target="_blank" href="https://github.com/czzczz/czzczz.github.io">
 			Github
 		</a>
 	</div>

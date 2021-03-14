@@ -55,6 +55,8 @@ export default defineComponent({
 		> * {
 			background: #fff;
 			padding: 20px 0;
+			border-radius: 5px;
+			box-shadow: 3px 6px 5px #999;
 		}
 		&:first-of-type,
 		&:last-of-type {
@@ -77,6 +79,12 @@ export default defineComponent({
 							content: '#';
 						}
 					}
+				}
+				ol {
+					list-style-type: decimal;
+				}
+				ul {
+					list-style-type: disc;
 				}
 			}
 		}
