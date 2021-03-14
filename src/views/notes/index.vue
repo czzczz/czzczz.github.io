@@ -44,10 +44,18 @@ export default defineComponent({
 <style lang="scss" scoped>
 .notes {
 	display: flex;
-	height: 100%;
+	width: 100%;
 	align-items: top;
+	box-sizing: border-box;
+	overflow-y: hidden;
 	> div {
+		padding: 0 8px;
 		overflow-y: auto;
+		box-sizing: border-box;
+		> * {
+			background: #fff;
+			padding: 20px 0;
+		}
 		&:first-of-type,
 		&:last-of-type {
 			width: 300px;
@@ -57,6 +65,9 @@ export default defineComponent({
 		&.body {
 			flex: 1;
 			position: relative;
+			.markdown-body {
+				padding: 20px 30px;
+			}
 			::v-deep() {
 				h2,
 				h3 {

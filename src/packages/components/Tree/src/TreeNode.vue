@@ -1,6 +1,11 @@
 <template>
 	<div class="shut-b-tree-node" :style="{ paddingLeft: treeCtx.props.indent + 'px' }">
-		<div class="shut-b-tree-node-body" @click.stop="nodeClick">
+		<div
+			class="shut-b-tree-node-body"
+			@mouseover="toggleHover(true)"
+			@mouseleave="toggleHover(false)"
+			@click.stop="nodeClick"
+		>
 			<ShutBIcon
 				:class="{ expand: state.expand }"
 				name="i-chevron_right_24px"
@@ -9,6 +14,7 @@
 			<div class="content">
 				<ShutBTreeNodeContent :data="data"></ShutBTreeNodeContent>
 			</div>
+			<ShutBMask backgroundColor="#000" :visible="state.hovered"></ShutBMask>
 		</div>
 		<ShutBCollapseTransition>
 			<div class="shut-b-tree-children" v-show="state.expand">
@@ -48,6 +54,7 @@ export default defineComponent({
 		if (!treeCtx) console.error('TreeNode must work in Tree Context');
 		const state = reactive({
 			expand: false,
+			hovered: false,
 		});
 		const children = computed(() => {
 			const childrenKey = treeCtx?.props.childrenKey || 'name';
@@ -60,11 +67,16 @@ export default defineComponent({
 			treeCtx?.ctx?.emit('nodeClick', props.data, { path: props.path, state });
 		};
 
+		const toggleHover = (v = true) => {
+			state.hovered = v;
+		};
+
 		return {
 			treeCtx,
 			state,
 			children,
 			nodeClick,
+			toggleHover,
 		};
 	},
 
@@ -81,6 +93,7 @@ export default defineComponent({
 	display: flex;
 	flex-direction: column;
 	.shut-b-tree-node-body {
+		position: relative;
 		display: flex;
 		padding: 5px 0;
 		.shut-b-icon {
