@@ -47,6 +47,10 @@ interface NoteBodyPoint {
 	child: NoteBodyPoint[];
 }
 
+export function isHTMLElement(el: Element): el is HTMLElement {
+	return (el as HTMLElement).addEventListener !== undefined && (el as HTMLElement).removeEventListener !== undefined;
+}
+
 export function usePagePoint() {
 	const $route = useRoute();
 	const noteBodyRef = ref<HTMLElement>();
@@ -60,8 +64,8 @@ export function usePagePoint() {
 	};
 	const initBodyPoints = () => {
 		noteBodyPoints.length = 0;
-		noteBodyRef.value?.querySelectorAll('h2,h3').forEach((n, i) => {
-			const node = n as HTMLElement;
+		noteBodyRef.value?.querySelectorAll('h2,h3').forEach((node, i) => {
+			if (!isHTMLElement(node)) return;
 			if (node.tagName === 'H2')
 				noteBodyPoints.push({
 					id: i + '',
