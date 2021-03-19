@@ -18,7 +18,7 @@ console.log(2);
 
 通过微任务 API 对回调进行包裹。微任务 API 可通过
 
-1. queueMicrotask 注册微任务回调
+1. queueMicrotask 或 process.nextTick 注册微任务回调
 2. MutationObserver 设置监听页面内容，该方法为对 IE11 的兼容处理
 
 ```js
@@ -47,6 +47,7 @@ function doMicroCallback(cb) {
 2. 若有返回值，值为一般值，新 Promise 状态为 fullfilled，值为返回值
 3. 若返回一个 Promise，新 Promise 状态与值与之相同。
 4. 回调抛出异常，新 Promise 为 rejected，原因为异常信息
+5. resolve 或 .then 若接收了 一个 pending 的 Promise，那么当前 Promise 状态也是 pending
 
 ```js
 Promise.resolve()
@@ -59,18 +60,20 @@ queueMicrotask(() => console.log(4));
 
 ## Promise 功能实现（含 executor、then、catch）
 
+**目前在解决 Promise 嵌套时功能有问题**
+
 ```js
 var PENDING = 'pending', // 挂起状态
 	FULLFILLED = 'fullfilled', // 已接受
 	REJECTED = 'rejected'; //已拒绝
 
-var nextTick = (this.process && this.process.nextTick) || queueMicrotask;
+var nextTick = (this.process && this.process.nextTick) || this.queueMicrotask;
 /*
  * 发起微任务并处理回调
  *
  * @param {Function} cb 微任务执行的主体任务，即 then 的回调
- * @param {Function} reso 转变 Promise 至接收态，该 Promise 为 then 返回的新 Promise
- * @param {Function} reje 转变 Promise 至拒绝态，该 Promise 为 then 返回的新 Promise
+ * @param {Function} reso 转变 Promise 至接收态，该 Promise 为 then 返回的 Promise
+ * @param {Function} reje 转变 Promise 至拒绝态，该 Promise 为 then 返回的 Promise
  * @param {any} param then 回调的参数
  */
 function doMicrotask(cb, reso, reje, param) {
@@ -84,6 +87,7 @@ function doMicrotask(cb, reso, reje, param) {
 			reje(e);
 		}
 	});
+	return true;
 }
 function MyPromise(executor) {
 	this.status = PENDING; // 状态
@@ -93,7 +97,7 @@ function MyPromise(executor) {
 
 	try {
 		// 执行执行器
-		executor(this.resolve.bind(this), this.reject.bind(this));
+		if (executor && typeof executor === 'function') executor(this.resolve.bind(this), this.reject.bind(this));
 	} catch (e) {
 		// 执行器异常，拒绝
 		this.reject(e);
@@ -103,31 +107,75 @@ MyPromise.prototype.resolve = function(data) {
 	// 状态只能转换一次
 	if (this.status !== PENDING) return;
 	this.status = FULLFILLED;
-	this.value = data;
-	if (this.fullfilledCallback) this.fullfilledCallback(data);
+	if (data instanceof MyPromise) {
+		// 判断是否是嵌套的 Promise，
+		var _this = this;
+		this.value = data;
+		data.then(function(res) {
+			_this.value = res;
+			if (_this.fullfilledCallback) {
+				_this.fullfilledCallback(res);
+			}
+		});
+	} else {
+		this.value = data;
+		if (this.fullfilledCallback) this.fullfilledCallback(data);
+	}
 };
 MyPromise.prototype.reject = function(reason) {
 	// 状态只能转换一次
 	if (this.status !== PENDING) return;
 	this.status = REJECTED;
+	this.value = reason;
 	if (this.rejectedCallback) this.rejectedCallback(reason);
 	// 没有对应的捕获回调，直接抛出异常
 	else throw reason;
 };
 MyPromise.prototype.then = function(onFullfill, onReject) {
-	var _this = this;
-	return new MyPromise(function(resolve, reject) {
-		// then 注册的回调为对当前 Promise（_this） 的状态订阅，
-		// 当 _this 的状态改变时，then 的 Promise 状态需要同样的变化
-		_this.fullfilledCallback = doMicrotask.bind(this, onFullfill, resolve, reject);
-		_this.rejectedCallback = doMicrotask.bind(this, onReject, resolve, reject);
-		// 若 executor 中已经同步 resolve 或 reject，_this 的状态已经变化，直接触发回调
-		if (_this.status === FULLFILLED) _this.fullfilledCallback();
-		if (_this.status === REJECTED) _this.rejectedCallback();
-	});
+	var np = new MyPromise(),
+		// 保留Promise的状态改变函数
+		reso = np.resolve.bind(np),
+		reje = np.reject.bind(np);
+
+	if (onFullfill) {
+		this.fullfilledCallback = doMicrotask.bind(this, onFullfill, reso, reje);
+		if (this.status === FULLFILLED && !(this.value instanceof MyPromise)) this.fullfilledCallback(this.value);
+	}
+	if (onReject) {
+		this.rejectedCallback = doMicrotask.bind(this, onReject, reso, reje);
+		if (this.status === REJECTED) this.rejectedCallback(this.value);
+	}
+	return np;
 };
 MyPromise.prototype.catch = function(onReject) {
 	// .then 的语法糖
 	return this.then(undefined, onReject);
 };
+new MyPromise(resolve => {
+	console.log(1);
+	resolve();
+})
+	.then(() => {
+		console.log(2);
+		return 5;
+	})
+	.then(d => {
+		console.log(d);
+		console.log(4);
+		throw '123';
+	})
+	.catch(err => {
+		console.log(err);
+	});
+console.log(3);
+new MyPromise((resolve, reject) => {
+	const p1 = new MyPromise(r => r('inner true'));
+	resolve(p1);
+	reject('inner false');
+}).then(
+	d => {
+		console.log(d);
+	},
+	err => console.log(err),
+);
 ```
