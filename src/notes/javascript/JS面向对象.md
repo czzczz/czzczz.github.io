@@ -54,3 +54,14 @@ c = new fc();
 b.a = 'bba';
 console.log(b.a, c.a, b.__proto__, b.__proto__ === c.__proto__); //bba ba fa { a: 'ba' } true
 ```
+
+# Object.create
+
+将提供的参数作为创建对象的原型并创建一个新的对象
+
+参数：
+
+1. proto，原型对象，会被直接用作新对象的**proto**；
+2. propertiesObject，属性对象，上面的属性会成为新对象的属性。
+
+**若 proto 为 null，那么新创建的 Object 将没有原型，`这也是唯一的创建无原型对象的方法`**

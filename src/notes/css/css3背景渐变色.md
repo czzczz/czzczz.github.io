@@ -21,6 +21,20 @@
 
 ## 径向渐变 `radial-gradient`
 
+## 径向渐变可用于实现卡片缺口
+
+**实现的缺口其实是背景图的一部分，因此 box-shadow 不会计算空白区域从而导致阴影位置异常，若需要阴影可能需要再设置两个圆形元素设置颜色来补齐阴影的缺口**
+
+```css
+.child {
+	width: 100%;
+	height: 100%;
+	/*以 21px  22px 的位置一个 20px 15px的椭圆为中心进行渐变*/
+	background: radial-gradient(ellipse 20px 10px at 21px 22px, , , rgba(0, 0, 0, 0) 30px, #fff 30px);
+	border-radius: 20px;
+}
+```
+
 ```html
 <style>
 	.linear {

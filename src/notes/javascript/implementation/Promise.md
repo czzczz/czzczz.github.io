@@ -103,6 +103,11 @@
 		return this.then(null, onRejected);
 	};
 
+	MyPromise.prototype.finally = function(onFinally) {
+		// then 语法糖
+		return this.then(onFinally, onFinally);
+	};
+
 	function resolvePromise(promise2, x, resolve, reject) {
 		// 判断 then 回调返回结果的函数
 		if (promise2 === x) throw 'Promise2 cannot be x'; // 不可链式的把已定义的 Promise 作为 then 的返回值
@@ -144,11 +149,65 @@
 
 ```js
 MyPromise.resolve = function(value) {
-	return new MyPromise(resolve => resolve(value));
+	return new MyPromise(function(resolve) {
+		resolve(value);
+	});
 };
 MyPromise.reject = function(reason) {
-	return new MyPromise((resolve, reject) => reject(reason));
+	return new MyPromise(function(resolve, reject) {
+		reject(reason);
+	});
 };
 ```
 
 ## Promise.all
+
+```js
+MyPromise.all = function(iterable) {
+	var _len = iterable.length, // 数组长度
+		_endCount = 0, // 记录整个数组处理完成的数量
+		_res = []; // 结果
+	return new MyPromise(function(resolve, reject) {
+		for (var p = 0; p < _len; p++) {
+			(function(idx, el) {
+				function resolveEl(el, resolve, reject) {
+					// 递归获取PromiseLike的值
+					try {
+						if (
+							((typeof el === 'object' && el !== null) || typeof el === 'function') &&
+							typeof el.then === 'function'
+						) {
+							el.then(function(y) {
+								resolveEl(y, resolve, reject);
+							});
+						} else resolve(el);
+					} catch (e) {
+						reject(e);
+					}
+				}
+				resolveEl(
+					el,
+					function(res) {
+						_res[idx] = res;
+						_endCount++;
+						if (_endCount === _len) resolve(_res); // 整个数组都处理完成了，all resolve
+					},
+					function(r) {
+						reject(r); // 任意一个成员处理失败，抛出异常
+					},
+				);
+			})(p, iterable[p]); // 作用域隔离
+		}
+	});
+};
+
+MyPromise.all([
+	1,
+	2,
+	new MyPromise(resolve => resolve(3)),
+	new MyPromise(resolve => resolve(4)),
+	// new MyPromise((resolve, reject) => reject(5)),
+]).then(res => {
+	console.log(res);
+});
+```
