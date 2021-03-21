@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build",
+		"build": "vue-cli-service build --modern",
 		"prettier": "prettier --write ./**/*.{md,ts,tsx,vue,html,js,jsx} --config ./.prettierrc --use-tabs",
 		"lint": "vue-cli-service lint --fix"
 	},

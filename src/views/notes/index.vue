@@ -69,6 +69,7 @@ export default defineComponent({
 			position: relative;
 			.markdown-body {
 				padding: 20px 30px;
+				// user-select: none; // 禁止用户选中
 			}
 			::v-deep() {
 				h2,
