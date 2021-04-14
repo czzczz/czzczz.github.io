@@ -27,6 +27,14 @@ for (var key in target) {
 console.log(Object.keys(target));
 ```
 
+## Object.getOwnProperties
+
+接收一个参数并返回该参数的除`Symbol`以外的属性，忽略enumerable描述符
+
+```js
+console.log(Object.getOwnProperties(target));
+```
+
 ## for...of
 
 根据`可迭代协议`对对象进行迭代。
