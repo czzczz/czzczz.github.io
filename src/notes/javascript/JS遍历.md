@@ -1,6 +1,8 @@
-# JS 遍历对象
+# JS 遍历
 
-## for...in
+## 对于对象的遍历
+
+### for...in
 
 通过获取对象的全部 key 对对象进行遍历，以任意顺序遍历一个对象的除`Symbol`以外的`可枚举属性`
 
@@ -15,7 +17,7 @@ for (var key in target) {
 }
 ```
 
-## Object.keys
+### Object.keys
 
 接收一个参数并返回该参数的除`Symbol`以外的`可枚举属性`
 
@@ -27,7 +29,7 @@ for (var key in target) {
 console.log(Object.keys(target));
 ```
 
-## Object.getOwnProperties
+### Object.getOwnProperties
 
 接收一个参数并返回该参数的除`Symbol`以外的属性，忽略enumerable描述符
 
@@ -35,7 +37,7 @@ console.log(Object.keys(target));
 console.log(Object.getOwnProperties(target));
 ```
 
-## for...of
+### for...of
 
 根据`可迭代协议`对对象进行迭代。
 
@@ -47,14 +49,14 @@ for (const val of [1, 2, 3]) {
 }
 ```
 
-## for await (val of target)
+### for await (val of target)
 
 for await...of 与 for...of 类似，须配合`异步迭代协议`，同时`与 await 语句一样只能在 async 函数中使用`。
 
 -   本身遍历对象跟 await 一样可以是同步对象也可以是 PromiseLike 异步[async,await](/#/notes/javascript/Promise.md)
 -   若为 `PromiseLike` 其后跟随的代码块内容会在 `resolve之后` 执行
 
-## for (var i = 0; i < max; i++) {}
+### for (var i = 0; i < max; i++) {}
 
 基本 for 循环。需要注意的是若 i 通过 var 定义，会作为外部变量，因此代码块内存在异步代码需要对该情况作处理
 
@@ -72,3 +74,27 @@ for (var i = 0; i < 10; i++)
 		setTimeout(() => console.log(i));
 	})(i);
 ```
+
+## 数组
+
+JS 内置的引用类型，可用于存放一组结构化的数据
+
+1.  含有属性 length 以及其它原型上的属性及方法。
+2.  toString 行为默认为：对内部所有元素执行一次 toString 后将结果用`","`拼接。
+3.  数组 length 是一个可写的属性，通过设置length属性将改变数据实际长度
+    -  若 length 设置的长度比原值小，数据将被裁剪，后边的元素会被抛弃。
+    -  若比原值大，那么数组将被填充。新增的位置视为 `empty 值`。
+4.  数组的 `empty 值`并非实际的数据值，而是描述**数组长度覆盖了该键的位置但数组并不拥有该键**，hasOwnProperty会返回false。
+5.  数组可以直接通过访问键的方式设置不同位置的值。
+    -  若设置值的键名为自然数（大于等于0且是整数）且超出当前数组长度，数组的 length 将会被改写，当然其它位置会被填充为 empty。
+
+### 数组扩展方法
+
+数组的遍历除了使用对象通用方式进行外，还可使用[数组的扩展方法](/#/notes/javascript/implementation/array/数组扩展方法.md)，不过兼容问题比较严重。
+
+## 类数组
+
+结构和字段类似数组的其它对象统称为类数组（`arrayLike`）
+
+### Array.from
+
