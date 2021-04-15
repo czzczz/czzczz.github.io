@@ -98,3 +98,15 @@ JS 内置的引用类型，可用于存放一组结构化的数据
 
 ### Array.from
 
+可以将类数组以及可迭代对象转为数组。
+参数：
+
+-   arrayLike，目标对象遵循一些条件
+    1.  不能是null,undefined,number,boolean。
+    2.  string 会作为迭代目标将每个字符转为数组的一项。
+    3.  目标对象没有length，或length不是自然数，length被置为0，即必定返回空数组。
+    4.  目标对应位置没有属性不会作为 `empty 值`，而会被填充 `undefined`。
+    5.  符合迭代协议的对象即遵循迭代遍历规范依次放入数组。
+-   mapFn，map 的回调，可以对每个元素执行map回调后再转为新数组
+-   thisArg，map回调的 this 指向
+    
