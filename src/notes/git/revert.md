@@ -20,8 +20,8 @@ git revert HEAD~2 # 往回第二条
 从id1到id2之间的所有提交，**依时间顺序从后到先依次回退**
 
 ```sh
-git revert <id1>..<id2> # 不包括id1
-git revert <id1>^..<id2> # id1也会被回退
+git revert id1..id2 # 不包括id1
+git revert id1^..id2 # id1也会被回退
 ```
 
 ## 参数 `--continue --abort --quit --skip`
@@ -47,5 +47,5 @@ git revert <id1>^..<id2> # id1也会被回退
 git merge feat/my_feat --no-ff
 # 该指令会生成一条merge commit记录
 # 回退的指令如下
-git revert <commit-id> -m 1 # -m 1 表示保留prod原本的内容
+git revert commit-id -m 1 # -m 1 表示保留prod原本的内容
 ```
