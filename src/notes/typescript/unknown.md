@@ -16,4 +16,4 @@ TS中的`unknown`类型与`any`类似是一种顶层的类型，即`unknown`可�
 
 -   typeof判断类型
 -   instanceof判断类型
--   自定义类型推断函数
+-   自定义类型保护函数
