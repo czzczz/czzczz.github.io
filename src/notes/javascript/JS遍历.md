@@ -29,6 +29,12 @@ for (var key in target) {
 console.log(Object.keys(target));
 ```
 
+### Reflect.ownKeys
+
+返回一个由目标对象自身的属性键组成的数组。它的返回值等同于`Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))`。
+
+忽略enumerable描述符
+
 ### Object.getOwnProperties
 
 接收一个参数并返回该参数的除`Symbol`以外的属性，忽略enumerable描述符
