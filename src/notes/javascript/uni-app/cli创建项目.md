@@ -40,3 +40,24 @@ uni-app使用的sass-loader版本须为`node-sass4`与`sass-loader8`（node8环�
     "sass-loader": "^8.0.2",
 }
 ```
+
+别用node-sass是更优方案的样子
+
+```json
+{
+    "sass": "^1.34.1",
+    "sass-loader": "^8.0.2",
+}
+```
+
+然后配置vue.config.js
+
+```js
+exports.css = {
+    loaderOptions: {
+        sass: {
+            implementation: require("sass") // 重新指定dart-sass为sass-loader的sdk源
+        }
+    }
+}
+```
