@@ -41,7 +41,7 @@ uni-app使用的sass-loader版本须为`node-sass4`与`sass-loader8`（node8环�
 }
 ```
 
-别用node-sass是更优方案的样子
+#### 别用node-sass是更优方案的样子
 
 ```json
 {
