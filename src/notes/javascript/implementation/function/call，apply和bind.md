@@ -58,7 +58,7 @@ Function.prototype.myApply = function(ctx, args) {
 1. ctx 为空，则设置为 window，否则对该值的包装对象
 2. 返回一个新的函数
 3. 新的函数内部已经用闭包记录了 bind 时预先填充的参数
-4. 新的函数可被正常的用作构造器
+4. 新的函数可被正常的用作构造器，且原型继承自原函数
 
 ```js
 Function.prototype.myBind = function(ctx) {
@@ -74,7 +74,7 @@ Function.prototype.myBind = function(ctx) {
 		return _fn.apply(_trueCtx, _args);
 	};
 	// 使用同样的原型
-	_newFn.prototype = _fn.prototype;
+	_newFn.prototype = Object.create(_fn.prototype);
 	return _newFn;
 };
 ```
