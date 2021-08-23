@@ -51,4 +51,22 @@
 
 ![径向渐变](images/径向渐变.png)
 
+### 径向渐变实现卡券效果（带阴影）
+
+```css
+.card {
+	margin: 50px;
+	width: 200px;
+	height: 200px;
+	background-image: radial-gradient(circle at left 30%, transparent 10px, red 10px), radial-gradient(circle at right
+				30%, transparent 10px, red 10px);
+	background-position: left 0, right 0;
+	background-size: 50% 100%, 50% 100%;
+	background-repeat: no-repeat, no-repeat;
+	filter: drop-shadow(3px 5px 4px #666);
+}
+```
+
+![卡券缺口特效](images/卡券缺口特效.png)
+
 ## 重复的径向渐变 `repeating-radial-gradient`
