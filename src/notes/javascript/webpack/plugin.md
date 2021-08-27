@@ -4,7 +4,7 @@
 
 `webpack-parallel-uglify-plugin`
 
-## JS代码压缩
+## JS 代码压缩
 
 -   `uglifyjs-webpack-plugin` 较旧，缺点是单线程操作导致压缩过程很慢
 -   `webpack-parallel-uglify-plugin`，对第一条进行多线程优化，速度更快

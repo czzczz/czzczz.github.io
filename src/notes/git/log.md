@@ -1,10 +1,11 @@
-# Log指令用于展示git提交记录以及其他相关信息
+# Log 指令用于展示 git 提交记录以及其他相关信息
 
 ```sh
 git log
 ```
 
 ## --pretty 对输出内容进行格式化
+
 ```sh
 git log --pretty=format:%xx...
 ```
@@ -63,27 +64,27 @@ git log --pretty=format:%xx...
 
 ```
 --date=relative shows dates relative to the current time, e.g. “2 hours ago”. The -local option has no effect for --date=relative.
- 
+
 --date=local is an alias for --date=default-local.
- 
+
 --date=iso (or --date=iso8601) shows timestamps in a ISO 8601-like format. The differences to the strict ISO 8601 format are:
- 
+
 a space instead of the T date/time delimiter
- 
+
 a space between time and time zone
- 
+
 no colon between hours and minutes of the time zone
 
 --date=iso-strict (or --date=iso8601-strict) shows timestamps in strict ISO 8601 format.
- 
+
 + --date=rfc (or --date=rfc2822) shows timestamps in RFC 2822 format, often found in email messages.
- 
+
 + --date=short shows only the date, but not the time, in YYYY-MM-DD format.
- 
+
 + --date=raw shows the date as seconds since the epoch (1970-01-01 00:00:00 UTC), followed by a space, and then the timezone as an offset from UTC (a + or - with four digits; the first two are hours, and the second two are minutes). I.e., as if the timestamp were formatted with strftime("%s %z")). Note that the -local option does not affect the seconds-since-epoch value (which is always measured in UTC), but does switch the accompanying timezone value.
- 
+
 + --date=unix shows the date as a Unix epoch timestamp (seconds since 1970). As with --raw, this is always in UTC and therefore -local has no effect.
- 
+
 + --date=format:... feeds the format ... to your system strftime, except for %z and %Z, which are handled internally. Use --date=format:%c to show the date in your system locale’s preferred format. See the strftime manual for a complete list of format placeholders. When using -local, the correct syntax is --date=format-local:....
 
 --date=default is the default format, and is similar to --date=rfc2822, with a few exceptions

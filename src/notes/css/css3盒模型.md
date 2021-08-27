@@ -58,7 +58,7 @@ body {
 
 在需要清除浮动影响的元素（通常是浮动元素之后的第一个）中设置该属性，可设置该元素的对应方向不应存在浮动元素，若存在则自动下移，同时由于该元素的自动下移，以及该元素还在父元素的文档流中，因此浮动元素的体积即 margin 将计入父元素高度。
 
-**也可通过父元素的after来清除浮动**
+**也可通过父元素的 after 来清除浮动**
 
 ```css
 /* 其他代码一致 */
@@ -90,10 +90,10 @@ BFC 清除浮动：
 
 同一方向的浮动元素默认会排成一行，若`宽度超过了父元素则自动换行`。
 
-#### 浮动元素的margin
+#### 浮动元素的 margin
 
--   当元素的浮动方向和margin的方向相同时，该元素可以覆盖或远离上一个浮动元素。
--   当元素的浮动方向和margin的方向相反时，该元素不能覆盖上一个浮动元素，最近只能紧贴上一个元素右边。
+-   当元素的浮动方向和 margin 的方向相同时，该元素可以覆盖或远离上一个浮动元素。
+-   当元素的浮动方向和 margin 的方向相反时，该元素不能覆盖上一个浮动元素，最近只能紧贴上一个元素右边。
 
 [解析实例](https://blog.csdn.net/Liu_yunzhao/article/details/103976547)
 
@@ -107,84 +107,84 @@ BFC 清除浮动：
 
 主要实现过程
 
-1.   中间栏设置width100%表示跟父元素同宽，以此自适应。
-2.   三个元素都同向float，此时他们是属于同一行的，不过由于中间栏`width: 100%`他们会被挤成3行。
-3.   通过margin将元素左移，让他们总宽度等于父元素，他们会排在一排但由于显示宽度导致后元素覆盖前元素。
-4.   对于left和right使用`position: relative`使其可以展示。此时虽然覆盖情况被消除但是left和right会被挤到父元素外部。
-5.   父元素设置margin或padding，将center挤小，此时布局完成。
+1.  中间栏设置 width100%表示跟父元素同宽，以此自适应。
+2.  三个元素都同向 float，此时他们是属于同一行的，不过由于中间栏`width: 100%`他们会被挤成 3 行。
+3.  通过 margin 将元素左移，让他们总宽度等于父元素，他们会排在一排但由于显示宽度导致后元素覆盖前元素。
+4.  对于 left 和 right 使用`position: relative`使其可以展示。此时虽然覆盖情况被消除但是 left 和 right 会被挤到父元素外部。
+5.  父元素设置 margin 或 padding，将 center 挤小，此时布局完成。
 
 圣杯布局的特点。
 
-1.   不需要额外节点
-2.   屏幕宽度过小会导致布局混乱。
-3.   圣杯布局需要设置body的最小宽度，否则在middle元素小于left元素宽度时，布局会混乱。
+1.  不需要额外节点
+2.  屏幕宽度过小会导致布局混乱。
+3.  圣杯布局需要设置 body 的最小宽度，否则在 middle 元素小于 left 元素宽度时，布局会混乱。
 
 ```css
- body {
-     min-width: 600px;
- }
+body {
+	min-width: 600px;
+}
 ```
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .header {
-        height: 40px;
-        background: lightblue;
-      }
-      .footer {
-        height: 100px;
-        background: lightcoral;
-      }
-      .main {
-        margin: 0 300px 0 200px; /*挤压父元素，使center宽度正常*/
-      }
-      .center {
-        width: 100%; /* 中间栏设置width100%表示跟父元素同宽，以此自适应 */
-        height: 500px;
-        margin-left: -200px; /*通过margin将元素左移，让他们总宽度等于父元素，他们会排在一排但由于显示宽度导致后元素覆盖前元素*/
-        float: left; /*三个元素均浮动，因此他们在文档流上是一行的*/
-        background: lightgray;
-      }
-      .left {
-        width: 200px;
-        height: 500px;
-        float: left;
-        background: lightpink;
-        position: relative; /* 通过相对定位将每个元素显示出来*/
-        left: -200px;
-      }
-      .right {
-        width: 300px;
-        height: 500px;
-        float: left;
-        margin-left: -300px;
-        background: lightgreen;
-        position: relative;
-        right: -300px;
-      }
-      .clearfix::after {
-        content: "";
-        display: block;
-        clear: both;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="header">头部</div>
-    <div class="main clearfix">
-      <div class="left">左列定宽</div>
-      <div class="center">中间自适应</div>
-      <div class="right">右列定宽</div>
-    </div>
-    <div class="footer">底部</div>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.header {
+				height: 40px;
+				background: lightblue;
+			}
+			.footer {
+				height: 100px;
+				background: lightcoral;
+			}
+			.main {
+				margin: 0 300px 0 200px; /*挤压父元素，使center宽度正常*/
+			}
+			.center {
+				width: 100%; /* 中间栏设置width100%表示跟父元素同宽，以此自适应 */
+				height: 500px;
+				margin-left: -200px; /*通过margin将元素左移，让他们总宽度等于父元素，他们会排在一排但由于显示宽度导致后元素覆盖前元素*/
+				float: left; /*三个元素均浮动，因此他们在文档流上是一行的*/
+				background: lightgray;
+			}
+			.left {
+				width: 200px;
+				height: 500px;
+				float: left;
+				background: lightpink;
+				position: relative; /* 通过相对定位将每个元素显示出来*/
+				left: -200px;
+			}
+			.right {
+				width: 300px;
+				height: 500px;
+				float: left;
+				margin-left: -300px;
+				background: lightgreen;
+				position: relative;
+				right: -300px;
+			}
+			.clearfix::after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">头部</div>
+		<div class="main clearfix">
+			<div class="left">左列定宽</div>
+			<div class="center">中间自适应</div>
+			<div class="right">右列定宽</div>
+		</div>
+		<div class="footer">底部</div>
+	</body>
 </html>
 ```
 
@@ -194,76 +194,75 @@ BFC 清除浮动：
 
 实现
 
-1.   与圣杯一致
-2.   与圣杯一致
-3.   与圣杯一致
-4.   双飞燕没有采用圣杯的方案，通过挤压center然后对left，right进行位移实现布局，而是`直接让left和right在前三步中覆盖center的左右两侧，然后center中增加一层节点center-wrap空出左右两个位置。最后将center真正的内容放到center-wrap中`。
-
+1.  与圣杯一致
+2.  与圣杯一致
+3.  与圣杯一致
+4.  双飞燕没有采用圣杯的方案，通过挤压 center 然后对 left，right 进行位移实现布局，而是`直接让left和right在前三步中覆盖center的左右两侧，然后center中增加一层节点center-wrap空出左右两个位置。最后将center真正的内容放到center-wrap中`。
 
 特点：
 
-1.   优先渲染主内容区域，通用性强，不需要设置body最小宽度。
-2.   需要多一个元素节点。
+1.  优先渲染主内容区域，通用性强，不需要设置 body 最小宽度。
+2.  需要多一个元素节点。
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .header {
-        height: 40px;
-        background: lightblue;
-      }
-      .footer {
-        height: 100px;
-        background: lightcoral;
-      }
-      .center {
-        width: 100%;
-        height: 500px;
-        float: left;
-        background: lightgray;
-      }
-      .center-wrap {
-        margin: 0 300px 0 200px;
-        height: 500px;
-        background-color: purple;
-      }
-      .left {
-        width: 200px;
-        margin-left: -100%;
-        float: left;
-        background: lightpink;
-      }
-      .right {
-        width: 300px;
-        height: 500px;
-        float: left;
-        margin-left: -300px;
-        background: lightgreen;
-      }
-      .clearfix::after {
-        content: "";
-        display: block;
-        clear: both;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="header">头部</div>
-    <div class="main clearfix">
-      <div class="center">
-        <div class="center-wrap">中间自适应</div>
-      </div>
-      <div class="left">左列定宽</div>
-      <div class="right">右列定宽</div>
-    </div>
-    <div class="footer">底部</div>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.header {
+				height: 40px;
+				background: lightblue;
+			}
+			.footer {
+				height: 100px;
+				background: lightcoral;
+			}
+			.center {
+				width: 100%;
+				height: 500px;
+				float: left;
+				background: lightgray;
+			}
+			.center-wrap {
+				margin: 0 300px 0 200px;
+				height: 500px;
+				background-color: purple;
+			}
+			.left {
+				width: 200px;
+				margin-left: -100%;
+				float: left;
+				background: lightpink;
+			}
+			.right {
+				width: 300px;
+				height: 500px;
+				float: left;
+				margin-left: -300px;
+				background: lightgreen;
+			}
+			.clearfix::after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">头部</div>
+		<div class="main clearfix">
+			<div class="center">
+				<div class="center-wrap">中间自适应</div>
+			</div>
+			<div class="left">左列定宽</div>
+			<div class="right">右列定宽</div>
+		</div>
+		<div class="footer">底部</div>
+	</body>
 </html>
 ```
 

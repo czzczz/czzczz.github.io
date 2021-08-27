@@ -33,11 +33,11 @@ console.log(Object.keys(target));
 
 返回一个由目标对象自身的属性键组成的数组。它的返回值等同于`Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))`。
 
-忽略enumerable描述符
+忽略 enumerable 描述符
 
 ### Object.getOwnProperties
 
-接收一个参数并返回该参数的除`Symbol`以外的属性，忽略enumerable描述符
+接收一个参数并返回该参数的除`Symbol`以外的属性，忽略 enumerable 描述符
 
 ```js
 console.log(Object.getOwnProperties(target));
@@ -87,12 +87,12 @@ JS 内置的引用类型，可用于存放一组结构化的数据
 
 1.  含有属性 length 以及其它原型上的属性及方法。
 2.  toString 行为默认为：对内部所有元素执行一次 toString 后将结果用`","`拼接。
-3.  数组 length 是一个可写的属性，通过设置length属性将改变数据实际长度（数组的长度重定义有兼容区别，IE9）
-    -  若 length 设置的长度比原值小，数据将被裁剪，后边的元素会被抛弃。
-    -  若比原值大，那么数组将被填充。新增的位置视为 `empty 值`。
-4.  数组的 `empty 值`并非实际的数据值，而是描述**数组长度覆盖了该键的位置但数组并不拥有该键**，hasOwnProperty会返回false。
+3.  数组 length 是一个可写的属性，通过设置 length 属性将改变数据实际长度（数组的长度重定义有兼容区别，IE9）
+    -   若 length 设置的长度比原值小，数据将被裁剪，后边的元素会被抛弃。
+    -   若比原值大，那么数组将被填充。新增的位置视为 `empty 值`。
+4.  数组的 `empty 值`并非实际的数据值，而是描述**数组长度覆盖了该键的位置但数组并不拥有该键**，hasOwnProperty 会返回 false。
 5.  数组可以直接通过访问键的方式设置不同位置的值。
-    -  若设置值的键名为自然数（大于等于0且是整数）且超出当前数组长度，数组的 length 将会被改写，当然其它位置会被填充为 empty。
+    -   若设置值的键名为自然数（大于等于 0 且是整数）且超出当前数组长度，数组的 length 将会被改写，当然其它位置会被填充为 empty。
 
 ### 数组扩展方法
 
@@ -108,11 +108,10 @@ JS 内置的引用类型，可用于存放一组结构化的数据
 参数：
 
 -   arrayLike，目标对象遵循一些条件
-    1.  不能是null,undefined,number,boolean。
+    1.  不能是 null,undefined,number,boolean。
     2.  string 会作为迭代目标将每个字符转为数组的一项。
-    3.  目标对象没有length，或length不是自然数，length被置为0，即必定返回空数组。
+    3.  目标对象没有 length，或 length 不是自然数，length 被置为 0，即必定返回空数组。
     4.  目标对应位置没有属性不会作为 `empty 值`，而会被填充 `undefined`。
     5.  符合迭代协议的对象即遵循迭代遍历规范依次放入数组。
--   mapFn，map 的回调，可以对每个元素执行map回调后再转为新数组
--   thisArg，map回调的 this 指向
-    
+-   mapFn，map 的回调，可以对每个元素执行 map 回调后再转为新数组
+-   thisArg，map 回调的 this 指向
