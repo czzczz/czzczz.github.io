@@ -50,3 +50,21 @@ function f(foo, values) {
 	}
 }
 ```
+
+## 替代方案
+
+用变量暂存某个属性，**注意 with 上的 this 指向跟直接链式调用一样，是 `exp`**
+
+```js
+const obj = {
+	val: 1,
+	log() {
+		console.log(this.val);
+	},
+};
+with (obj) {
+	log(); // 1;
+}
+const { log } = obj;
+log(); // undefined
+```
